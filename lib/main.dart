@@ -7,11 +7,23 @@ import 'package:medcare/theme.dart';
 import 'package:medcare/view/splash_screen.dart';
 
 Future<void> main() async {
+  // Ensure that Flutter is initialized
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+
+  try {
+    // Initialize Firebase
+    await Firebase.initializeApp();
+  } catch (e) {
+    print('Error initializing Firebase: $e');
+  }
+
+  // Initialize GetStorage
   await GetStorage.init();
+
+  // Run the app
   runApp(const MyApp());
 }
+// this is documentation file
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -25,7 +37,7 @@ class MyApp extends StatelessWidget {
       theme: Themes.light,
       darkTheme: Themes.dark,
       themeMode: ThemeService().theme,
-      home:  SplashScreen(),
+      home: SplashScreen(),
     );
   }
 }

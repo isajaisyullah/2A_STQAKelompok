@@ -4,6 +4,7 @@ import 'dart:convert';
 class PoliModel {
   String? id;
   final String nama;
+
   PoliModel({
     this.id,
     required this.nama,
@@ -25,5 +26,11 @@ class PoliModel {
 
   String toJson() => json.encode(toMap());
 
-  factory PoliModel.fromJson(String source) => PoliModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory PoliModel.fromJson(String source) {
+    return PoliModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  }
+
+  static PoliModel fromJsonMap(Map<String, dynamic> map) {
+    return PoliModel.fromMap(map);
+  }
 }

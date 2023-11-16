@@ -23,13 +23,13 @@ class AuthController {
         final UserModel currentUser = UserModel(
           Uid: user.uid,
           email: user.email ?? '',
-          name: snapshot['name'] ?? '',
+          name: snapshot.exists ? snapshot['name'] ?? '' : '',
         );
 
         return currentUser;
       }
     } catch (e) {
-      //print('Error signIn user: $e');
+      print('Error signIn user: $e');
     }
 
     return null;
